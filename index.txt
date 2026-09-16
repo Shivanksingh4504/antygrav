@@ -1,0 +1,15 @@
+// For Image setup
+UI mein use hone wali **saari images, logos aur icons ko local assets ke roop mein project ke andar store karo. External image URLs, remote image links, CDN ya online image sources use mat karo. Zarurat ho to assets ko assets/images/ folder mein rakho aur code mein local asset paths use karo. App ko images display karne ke liye internet connection par dependent nahi hona chahiye.
+
+
+// overwrite na ho
+“Existing backend code ko modify, delete ya overwrite mat karo. Sirf required new files/code add karo. Existing APIs, routes, controllers, models aur configurations ko preserve karo.”
+step--
+git add .
+git commit -m "UI and backend working"
+glti hone pr..
+git status
+git log --oneline
+<abc1234 Payment system ,xyz5678 UI and backend working>
+restore ke liye---
+git reset --hard xyz5678
