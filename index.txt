@@ -13,3 +13,37 @@ git log --oneline
 <abc1234 Payment system ,xyz5678 UI and backend working>
 restore ke liye---
 git reset --hard xyz5678
+
+Debugging------>>>>>
+
+React Frontend
+     ↓
+API URL / Request
+     ↓
+Express Route
+     ↓
+Controller
+     ↓
+MongoDB
+     ↓
+Response
+     ↓
+React UI
+
+phle check kro...
+F12 → Network
+Agar 404 → route/URL problem.
+
+Agar 500 → backend me error.
+
+Agar 400 → request/data validation problem.
+
+Frontend
+   ↓
+Route HIT
+   ↓
+Controller HIT
+   ↓
+req.body
+   ↓
+Database
