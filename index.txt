@@ -47,3 +47,106 @@ Controller HIT
 req.body
    ↓
 Database
+
+
+🔴 Breakpoint lagao
+       ↓
+▶ Debugger start
+       ↓
+🌐 Frontend se request bhejo
+       ↓
+⏸️ Code rukega
+       ↓
+👀 Variables check karo
+       ↓
+F10 → line by line aage jao
+       ↓
+❌ Jahan problem mile = bug ka area
+
+
+....>>>>
+MERN me breakpoint kahan-kahan lagao?
+React
+  ↓
+① User Action
+  ↓
+② API Call
+  ↓
+Express Route
+  ↓
+③ Controller
+  ↓
+④ Validation / Business Logic
+  ↓
+⑤ MongoDB Query
+  ↓
+⑥ Response
+  ↓
+⑦ React Response Handling
+  ↓
+UI
+1️⃣ React — API call se just pehle
+await axios.post("/api/safety", data);  // 🔴
+2️⃣ Express Route
+router.post("/safety", safetyController); // 🔴
+
+3️⃣ Controller — req.body
+
+const safetyController = async (req, res) => {
+
+    const data = req.body;  // 🔴
+
+    // ...
+};
+
+
+
+4️⃣ Important logic / condition
+if (data.category === "safety") {  // 🔴
+    // ...
+}
+
+const score = calculateScore(data); // 🔴
+
+5️⃣ MongoDB query
+const result = await Safety.create(data); // 🔴
+
+const user = await User.findOne({ email }); // 🔴
+
+6️⃣ Response bhejne se pehle
+console.log(result);
+
+return res.status(200).json(result); // 🔴
+
+7️⃣ React me response milne ke baad
+const response = await axios.post("/api/safety", data);
+
+console.log(response.data);
+
+setResult(response.data); // 🔴
+
+>>>> F10 = Step Over
+
+Har baar F10 dabane par code ek line aage jayega
+
+<<<< Agar browser se request bhejne ke baad VS Code breakpoint par rukta hi nahi, iska matlab ho sakta hai:
+
+Frontend
+   ↓
+API call ❌
+   ↓
+Backend
+
+ya
+
+Frontend
+   ↓
+Wrong URL ❌
+   ↓
+Backend route tak nahi pahucha
+
+Is case me F10 ka koi kaam nahi, pehle ye find karna hai ki request breakpoint tak kyon nahi pahunch rhi
+
+Simple rule yaad rakho:
+
+🔴 Breakpoint → ▶ Debug → Browser se action → ⏸️ Code rukega → F10 → Variables check
